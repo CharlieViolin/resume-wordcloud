@@ -4,7 +4,7 @@ library(dplyr)
 library(tidytext)
 
 # read docx file
-doc <- read_docx("PATH/filename.docx")
+doc <- read_docx("~/OneDrive - McMaster University/Winter 2023/Internship Search/Resume_VIOLIN.docx")
 
 content <- docx_summary(doc)
 
@@ -22,11 +22,11 @@ content <- content %>%
 # top ten
 top20_words <- content %>%
     count(word, sort = TRUE) %>%
-    top_n(20) %>%
+    top_n(30) %>%
     mutate(percentage = n/sum(n))
 
 # word cloud
-ggplot(top20_words, aes(label = word, size = n, color = word)) +
+ggplot(top20_words, aes(label = word, size = percentage, color = word)) +
     geom_text_wordcloud() +
     scale_size_area(max_size = 8) +
     theme_classic()
