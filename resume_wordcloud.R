@@ -15,7 +15,7 @@ content <- gsub(content$text, pattern = "[0-9]", replacement = "")
 content <- tibble(line = content) %>%
     tidytext::unnest_tokens(word, line)
 
-# Remove stop words
+# Remove common stop words
 content <- content %>%
     anti_join(stop_words)
 
