@@ -4,7 +4,7 @@ library(dplyr)
 library(tidytext)
 
 # read docx file
-doc <- read_docx("PATH/filname.docx")
+doc <- read_docx("PATH/filename.docx")
 
 content <- docx_summary(doc)
 
